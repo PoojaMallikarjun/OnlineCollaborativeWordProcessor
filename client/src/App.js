@@ -5,13 +5,21 @@ import {
   Route,
   Redirect
 } from 'react-router-dom'
+import {v4} from 'uuid';
 
 function App() {
   
   return (
-    <div>
-      <TextEditor/>
-    </div>
+    <Router>
+      <Switch>
+        <Route path="/" exact >
+            <Redirect to={`/docs/${v4()}`}/>
+        </Route>
+        <Route path="/docs/:id"  >
+          <TextEditor/>      
+        </Route>
+        </Switch>
+    </Router>
   );
 }
 
